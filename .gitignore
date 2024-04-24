@@ -1,0 +1,9 @@
+# Compiled Python files
+__pycache__/
+*.py[cod]
+
+# Local development settings
+env
+
+# Python virtual environment
+.venv/

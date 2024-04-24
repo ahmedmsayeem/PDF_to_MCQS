@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pdf to Femini</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <style>
+    .list-alphabet {
+  list-style-type: none; /* Remove default list style */
+}
+</style>
+</head>
+
+<body class="bg-sky-700"> 
+
+    <h2 class="text-center p-2 text-bold bg-sky-200 ">LEARN FROM YOUR PDFs USING MCQS</h2>
+  
+    <div class="form text-center p-16 ">
+
+        <form class="text-center bg-sky-200 p-14" action="http://127.0.0.1:5000/" method="POST" enctype="multipart/form-data">
+
+
+        <label for="pdf_file" class="bg-slate-300 p-1" >Drop/Add your PDF</label><br><br>
+        <input type="file" id="pdfEntry" name="pdf_file" ><br><br>
+        <button class="bg-slate-400 hover:bg-slate-300 p-2 rounded" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <div class="flex justify-evenly p-10 rounded ">
+
+        <div class="p-6 m-2 bg-slate-300 flex-1 ">
+            
+            <h2>pdf content</h2>
+                 <div class="p-1">
+                    <div class="qn bg-sky-200 p-4">
+                        <!-- {{data}} -->
+                        {{response.text}}
+                    </div>
+                   
+                </div>
+
+            
+
+            
+            
+            
+        </div>
+        <div class=" p-6 m-2 bg-slate-300 flex-1">
+            <h2>mcqs for you</h2>
+             {% for qn in response %}
+        <div class="flex flex-col m-2 rounded bg-sky-300 ">
+            <div class="p-1">
+                <div class="qn bg-sky-200 p-4">
+                    {{ qn['question'] }}
+                </div>
+
+                 <ol class="list-decimal list-inside p-4">
+                    {% for option in qn['options'] %}
+                    <li>{{ option }}</li>
+                    
+                     {% endfor %}
+                </ol>
+                <p>
+                <small class="p-1">hover for answer    </small>
+                <p class="rounded p-1 bg-black transition duration-600 hover:bg-sky-300 w-fit text-center"> {{ qn['answer'] }}</p>
+
+
+                </p>
+               
+            </div>
+        </div>
+        {% endfor %}
+
+            
+        </div>
+    </div>
+
+   
+    
+</body>
+</html>

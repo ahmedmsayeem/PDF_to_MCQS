@@ -11,7 +11,7 @@ import google.generativeai as genai
 from IPython.display import display
 from IPython.display import Markdown
 
-GOOGLE_API_KEY="AIzaSyAr6G0NZg0-d75x5LeuoUXpCN1Xu6DcV7A"
+GOOGLE_API_KEY=""
 
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro') 

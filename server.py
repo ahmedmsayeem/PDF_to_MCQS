@@ -11,7 +11,7 @@ import google.generativeai as genai
 from IPython.display import display
 from IPython.display import Markdown
 
-GOOGLE_API_KEY=""
+GOOGLE_API_KEY="AIzaSyAr6G0NZg0-d75x5LeuoUXpCN1Xu6DcV7A"
 
 genai.configure(api_key=GOOGLE_API_KEY)
 model = genai.GenerativeModel('gemini-pro') 
@@ -52,7 +52,7 @@ async def deal():
 
 
 
-    return render_template("chat.html", data=text, response=response['questions'])
+    return render_template("chat.html", data=text, response=response['questions'],load=False)
 
 async def save_pdf(filename, pdf_file):
     # Save the PDF file asynchronously
@@ -62,5 +62,5 @@ async def save_pdf(filename, pdf_file):
 
 @app.route("/",methods=['GET'])
 def dipl():
-    return render_template("chat.html",data="",response="yet to cook")
+    return render_template("chat.html",data="",response="yet to cook",load=True)
 
